@@ -6,15 +6,15 @@ class Db
 
     private function __construct()
     {
-       $_db = parse_url(getenv("DATABASE_URL"));
+       $db = parse_url(getenv("DATABASE_URL"));
 
-	$pdo = new PDO("pgsql:" . sprintf(
+	$this->_db = new PDO("pgsql:" . sprintf(
 	    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
-	    $_db["host"],
-	    $_db["port"],
-	    $_db["user"],
-	    $_db["pass"],
-	    ltrim($_db["path"], "/")
+	    $db["host"],
+	    $db["port"],
+	    $db["user"],
+	    $db["pass"],
+	    ltrim($db["path"], "/")
 	));
     }
 
